@@ -6,7 +6,7 @@
   "author": "Zaxerone",
   "license": "MIT",
   "scripts": {
-    "test": "electron ."
+    "start": "electron ."
   },
   "dependencies": {
     "sharp": "^0.33.2"

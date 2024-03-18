@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const sharp = require("sharp");
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 let mainWindow;
 
@@ -31,6 +31,7 @@ ipcMain.handle(
       "avif",
       "tiff",
       "jpg",
+      "svg",
     ];
     if (!supportedFormats.includes(outputFormat.toLowerCase())) {
       throw new Error(`Unsupported output format: ${outputFormat}`);
