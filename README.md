@@ -30,7 +30,6 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the for
 
 ### Supported formats
 
-> [!DANGER]
 > These supported formats are for CONVERSION and not for IMPORTS. To see for the imports, please see the <a href="./formats.js">format File</a>.
 
 - JPEG
@@ -59,4 +58,10 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the for
 git clone https://github.com/Zaxerone/Image-Tool-App.git
 cd Image-Tool-App
 npm install
+```
+
+You can start it by running the `start` script.
+
+```
+npm run start
 ```
