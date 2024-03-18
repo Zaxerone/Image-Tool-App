@@ -9,6 +9,7 @@
     "start": "electron ."
   },
   "dependencies": {
+    "filepond": "^4.30.6",
     "sharp": "^0.33.2"
   },
   "devDependencies": {

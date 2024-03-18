@@ -4,62 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Converter</title>
+    <!-- Adding P5, Bulma, Font Awesome and jQuery to the page -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/b26caf8659.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <svg id="circles"></svg>
-    <div id="container">
-      <h2>Image Converter</h2>
-      <input type="file" id="fileInput" accept="image/*" />
-      <select id="formatSelect">
-        <option value="jpeg">JPEG</option>
-        <option value="png">PNG</option>
-        <option value="webp">WebP</option>
-        <option value="gif">GIF</option>
-        <option value="avif">AVIF</option>
-        <option value="tiff">TIFF</option>
-        <option value="jpg">JPG</option>
-        <option value="svg">SVG</option>
-      </select>
-      <button onclick="convertImage()">Convert</button>
+    <!-- Add windows controls to the window (close, maximize, minimize) -->
+    <div id="window-controls">
+      <button id="minimize-btn"><i class="fas fa-minus"></i></button>
+      <button id="maximize-btn"><i class="far fa-square"></i></button>
+      <button id="close-btn"><i class="fas fa-times"></i></button>
     </div>
 
-    <script>
-      const { ipcRenderer } = require("electron");
+    <!-- Set up circles svg to the background -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <circle cx="256" cy="256" r="240" fill="#ffffff" />
+      <circle cx="100" cy="100" r="50" fill="#007bff" />
+      <circle cx="400" cy="150" r="70" fill="#007bff" />
+      <circle cx="256" cy="256" r="240" fill="#ffffff" />
+      <circle cx="100" cy="100" r="50" fill="#007bff" />
+      <circle cx="400" cy="150" r="70" fill="#007bff" />
+    </svg>
 
-      function convertImage() {
-        const inputFilePath =
-          document.getElementById("fileInput").files[0].path;
-        const outputFormat = document.getElementById("formatSelect").value;
+    <!-- Conversion container part -->
+    <div id="container" class="container">
+      <!-- Importation -->
+      <h2 class="title is-2 has-text-centered">Image Converter</h2>
+      <div class="file-input-container">
+        <label for="fileInput" class="file-label">
+          <span id="fileLabelText"
+            ><i class="fa-solid fa-upload"></i> Import image</span
+          >
+        </label>
+        <input
+          class="file-input"
+          type="file"
+          id="fileInput"
+          accept="image/*"
+          onchange="handleFileInputChange(event)"
+        />
+      </div>
+      <!-- Selection -->
+      <div class="select is-multiple">
+        <select id="formatSelect">
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WebP</option>
+          <option value="gif">GIF</option>
+          <option value="avif">AVIF</option>
+          <option value="tiff">TIFF</option>
+          <option value="jpg">JPG</option>
+        </select>
+      </div>
+      <!-- Convert -->
+      <button class="button is-success" onclick="convertImage()">
+        Convert
+      </button>
+    </div>
 
-        ipcRenderer
-          .invoke("chooseDirectory")
-          .then((directory) => {
-            if (directory) {
-              ipcRenderer
-                .invoke("convertImage", {
-                  inputFilePath,
-                  outputFormat,
-                  outputDirectory: directory,
-                })
-                .then((outputFilePath) => {
-                  alert(
-                    `Image converted successfully. Output file: ${outputFilePath}`
-                  );
-                })
-                .catch((error) => {
-                  alert(`Error converting image: ${error.message}`);
-                });
-            }
-          })
-          .catch((error) => {
-            alert(`Error choosing directory: ${error.message}`);
-          });
-      }
-    </script>
-
-    <script src="js/sketch.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/circles.js"></script>
   </body>
 </html>

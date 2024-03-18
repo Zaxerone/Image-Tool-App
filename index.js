@@ -1,38 +1,32 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const sharp = require("sharp");
-const fs = require("node:fs");
 const path = require("node:path");
+const fs = require("node:fs");
 
 let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
+    frame: false,
+    backgroundColor: "#ffffff",
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
 
-  mainWindow.loadFile("./assets/index.html");
+  mainWindow.loadFile("assets/index.html");
+
+  mainWindow.on("closed", () => {
+    mainWindow = null;
+  });
 }
-
-app.whenReady().then(createWindow);
-
 ipcMain.handle(
   "convertImage",
   async (event, { inputFilePath, outputFormat, outputDirectory }) => {
-    const supportedFormats = [
-      "jpeg",
-      "png",
-      "webp",
-      "gif",
-      "avif",
-      "tiff",
-      "jpg",
-      "svg",
-    ];
+    const supportedFormats = require("./formats.js");
     if (!supportedFormats.includes(outputFormat.toLowerCase())) {
       throw new Error(`Unsupported output format: ${outputFormat}`);
     }
@@ -68,5 +62,41 @@ ipcMain.handle("chooseDirectory", async (event) => {
     }
   } catch (error) {
     throw error;
+  }
+});
+
+app.whenReady().then(createWindow);
+
+ipcMain.on("minimize-window", () => {
+  if (mainWindow) {
+    mainWindow.minimize();
+  }
+});
+
+ipcMain.on("maximize-window", () => {
+  if (mainWindow) {
+    if (mainWindow.isMaximized()) {
+      mainWindow.restore();
+    } else {
+      mainWindow.maximize();
+    }
+  }
+});
+
+ipcMain.on("close-window", () => {
+  if (mainWindow) {
+    mainWindow.close();
+  }
+});
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
 });

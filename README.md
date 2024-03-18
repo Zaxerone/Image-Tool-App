@@ -4,15 +4,19 @@ As it's name says, it's just a simple image tool app made for non-developers. Ac
 
 # Summary
 
-1. [Functions](#functions)
-   - [Conversion](#conversion)
-     - [Supported Formats](#supported-formats)
-2. [Installing](#installing)
-3. [Development](#development)
-   - [Requirements](#requirements)
-     - [Packages](#packages)
-     - [Platforms](#platforms)
-   - [Build](#build)
+- [Functions](#functions)
+
+  - [Conversion](#conversion)
+    - [Supported Formats](#supported-formats)
+
+- [Installing](#installing)
+
+  - [Development](#development)
+
+- [Requirements](#requirements)
+  - [Packages](#packages)
+  - [Platforms](#platforms)
+- [Build](#build)
 
 # Functions
 
@@ -22,9 +26,12 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the for
 
 # Installing
 
-NO RELEASE YET.
+**THERE'S NO RELEASE YET.**
 
 ### Supported formats
+
+> [!DANGER]
+> These supported formats are for CONVERSION and not for IMPORTS. To see for the imports, please see the <a href="./formats.js">format File</a>.
 
 - JPEG
 - PNG
@@ -32,7 +39,6 @@ NO RELEASE YET.
 - GIF
 - AVIF
 - TIFF
-- SVG
 
 # Development
 
@@ -40,8 +46,8 @@ NO RELEASE YET.
 
 ### Packages
 
-- **Sharp** (v0.33.2)
-- **Electron** (v29.1.4)
+- **Sharp** (v0.33.2 or newer)
+- **Electron** (v29.1.4 or newer)
 
 ### Platforms
 
