@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <svg id="circles"></svg>
+    <div id="container">
+      <h2>Image Converter</h2>
+      <input type="file" id="fileInput" accept="image/*" />
+      <select id="formatSelect">
+        <option value="jpeg">JPEG</option>
+        <option value="png">PNG</option>
+        <option value="webp">WebP</option>
+        <option value="gif">GIF</option>
+        <option value="avif">AVIF</option>
+        <option value="tiff">TIFF</option>
+        <option value="jpg">JPG</option>
+      </select>
+      <button onclick="convertImage()">Convert</button>
+    </div>
+
+    <script>
+      const { ipcRenderer } = require("electron");
+
+      function convertImage() {
+        const inputFilePath =
+          document.getElementById("fileInput").files[0].path;
+        const outputFormat = document.getElementById("formatSelect").value;
+
+        ipcRenderer
+          .invoke("chooseDirectory")
+          .then((directory) => {
+            if (directory) {
+              ipcRenderer
+                .invoke("convertImage", {
+                  inputFilePath,
+                  outputFormat,
+                  outputDirectory: directory,
+                })
+                .then((outputFilePath) => {
+                  alert(
+                    `Image converted successfully. Output file: ${outputFilePath}`
+                  );
+                })
+                .catch((error) => {
+                  alert(`Error converting image: ${error.message}`);
+                });
+            }
+          })
+          .catch((error) => {
+            alert(`Error choosing directory: ${error.message}`);
+          });
+      }
+    </script>
+
+    <script src="js/sketch.js"></script>
+  </body>
+</html>

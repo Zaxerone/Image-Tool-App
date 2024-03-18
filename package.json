@@ -1,0 +1,17 @@
+{
+  "name": "image-tool-app",
+  "description": "A simple tool to convert image format, made for non-developers users.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Zaxerone",
+  "license": "MIT",
+  "scripts": {
+    "test": "electron ."
+  },
+  "dependencies": {
+    "sharp": "^0.33.2"
+  },
+  "devDependencies": {
+    "electron": "^29.1.4"
+  }
+}
