@@ -1,6 +1,8 @@
 # Image Tool App
 
-As it's name says, it's just a simple image tool app made for non-developers. Actually only capable of converting images into another format (eg. WebP -> PNG).
+As its name suggests, this is a simple image tool app designed for non-developers. Currently, it can only convert images into another format (e.g., WebP to PNG).
+
+![electron_hd4Ql24s6l](https://github.com/Zaxerone/Image-Tool-App/assets/46900584/1d2da86d-0f74-4b3d-a0bc-2c6446543cd2)
 
 # Summary
 
@@ -22,7 +24,7 @@ As it's name says, it's just a simple image tool app made for non-developers. Ac
 
 ## Conversion
 
-The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the formats supported are necessarily those supported by the tool.
+The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the supported formats are necessarily those supported by the tool.
 
 # Installing
 
@@ -30,7 +32,12 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the for
 
 ### Supported formats
 
-> These supported formats are for CONVERSION and not for IMPORTS. To see for the imports, please see the <a href="./formats.js">format File</a>.
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/note.svg">
+>   <img alt="Note" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/note.svg">
+> </picture><br>
+>
+> These supported formats are for CONVERSION only and may differ from the formats supported for imports. Please refer to the [format file](./formats.js) for import formats.
 
 - JPEG
 - PNG
@@ -51,6 +58,13 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the for
 ### Platforms
 
 - **Node.js** (v20.11.1 or newer)
+
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/error.svg">
+>   <img alt="Error" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/error.svg">
+> </picture><br>
+>
+> Your package-manager must be UP-TO-DATE or it will result in an error.
 
 ## Build
 
