@@ -7,7 +7,8 @@ As it's name says, it's just a simple image tool app made for non-developers. Ac
 1. [Functions](#functions)
    - [Conversion](#conversion)
      - [Supported Formats](#supported-formats)
-2. [Development](#development)
+2. [Installing](#installing)
+3. [Development](#development)
    - [Requirements](#requirements)
      - [Packages](#packages)
      - [Platforms](#platforms)
@@ -18,6 +19,10 @@ As it's name says, it's just a simple image tool app made for non-developers. Ac
 ## Conversion
 
 The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the formats supported are necessarily those supported by the tool.
+
+# Installing
+
+NO RELEASE YET.
 
 ### Supported formats
 
