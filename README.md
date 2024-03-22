@@ -4,7 +4,7 @@ As its name suggests, this is a simple image tool app designed for non-developer
 
 ![electron_hd4Ql24s6l](https://github.com/Zaxerone/Image-Tool-App/assets/46900584/1d2da86d-0f74-4b3d-a0bc-2c6446543cd2)
 
-# Summary
+# Table of contents
 
 - [Functions](#functions)
 
