@@ -5,7 +5,7 @@ const path = require("node:path");
 const extract = require("extract-zip");
 
 const serverBaseUrl =
-  "https://api.github.com/repos/Zaxerone/ita-tests/releases/latest";
+  "https://api.github.com/repos/Zaxerone/image-tool-app/releases/latest";
 
 function downloadUpdate(assetUrl, fileName) {
   const downloadPath = path.join(app.getPath("temp"), fileName);
