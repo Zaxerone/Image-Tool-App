@@ -28,7 +28,16 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the sup
 
 # Installing
 
-**THERE'S NO RELEASE YET.**
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/warning.svg">
+>   <img alt="Warning" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg">
+> </picture><br>
+>
+> **Update system is still in development, there may be some problems with it.**
+
+**Only available for Windows x64.**
+
+**To install see the [releases](https://github.com/Zaxerone/Image-Tool-App/releases)**
 
 ### Supported formats
 
@@ -37,7 +46,7 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the sup
 >   <img alt="Note" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/note.svg">
 > </picture><br>
 >
-> These supported formats are for CONVERSION only and may differ from the formats supported for imports. Please refer to the [format file](./formats.js) for import formats.
+> **These supported formats are for CONVERSION only and may differ from the formats supported for imports. Please refer to the [format file](./util/formats.js) for import formats.**
 
 - JPEG
 - PNG
@@ -64,18 +73,31 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the sup
 >   <img alt="Error" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/error.svg">
 > </picture><br>
 >
-> Your package-manager must be UP-TO-DATE or it will result in an error.
+> **Your package-manager must be UP-TO-DATE or it will result in an error.**
 
 ## Build
 
 ```sh
-git clone https://github.com/Zaxerone/Image-Tool-App.git
+$ git clone https://github.com/Zaxerone/Image-Tool-App.git
 cd Image-Tool-App
-npm install
+$ npm install
+```
+
+### Packaging
+
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/error.svg">
+>   <img alt="Error" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/error.svg">
+> </picture><br>
+>
+> **You must execute the `modules` script of package.json after the packaging !**
+
+```sh
+npm run package-win
 ```
 
 You can start it by running the `start` script.
 
-```
+```sh
 npm run start
 ```

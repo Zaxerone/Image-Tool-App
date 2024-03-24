@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { checkForUpdates } = require("./util/updater.js");
 const sharp = require("sharp");
 const path = require("node:path");
 const fs = require("node:fs");
@@ -15,6 +16,7 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    icon: path.join(__dirname, "icons", "icon.png"),
   });
 
   mainWindow.loadFile("assets/index.html");
@@ -26,7 +28,7 @@ function createWindow() {
 ipcMain.handle(
   "convertImage",
   async (event, { inputFilePath, outputFormat, outputDirectory }) => {
-    const supportedFormats = require("./formats.js");
+    const supportedFormats = require("./util/formats.js");
     if (!supportedFormats.includes(outputFormat.toLowerCase())) {
       throw new Error(`Unsupported output format: ${outputFormat}`);
     }
@@ -65,7 +67,9 @@ ipcMain.handle("chooseDirectory", async (event) => {
   }
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+});
 
 ipcMain.on("minimize-window", () => {
   if (mainWindow) {
@@ -87,6 +91,11 @@ ipcMain.on("close-window", () => {
   if (mainWindow) {
     mainWindow.close();
   }
+});
+
+app.on("ready", () => {
+  setInterval(checkForUpdates, 24 * 60 * 60 * 1000);
+  checkForUpdates();
 });
 
 app.on("activate", () => {
