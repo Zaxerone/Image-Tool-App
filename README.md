@@ -33,7 +33,7 @@ The conversion is done with [Sharp](https://sharp.pixelplumbing.com), so the sup
 >   <img alt="Warning" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg">
 > </picture><br>
 >
-> **Update system is still in development, there may be some problems with it.**
+> **Update system doesn't work for now, you will just have a pop-up that says you have an update but it's not the case so just ignore it. It has some issues.**
 
 **Only available for Windows x64.**
 
